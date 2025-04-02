@@ -44,7 +44,7 @@ exports.seed = async function(knex) {
       created_at: new Date(),
       updated_at: new Date()
     },
-    
+  
     {
       id: 5,
       user_id: 3,
