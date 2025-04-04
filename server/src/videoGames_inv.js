@@ -28,7 +28,7 @@ router.post('/items', async (req, res) => {
   router.get('/items', async (req, res) => {
     try {
       let items = await knex('items').select('*');
-      // Map each item to truncate its description if necessary.
+      
       items = items.map(item => ({
         ...item,
         description: truncateDescription(item.description)
@@ -110,7 +110,11 @@ router.post('/items', async (req, res) => {
   router.get('/users/:id/items', async (req, res) => {
     try {
       const { id } = req.params;
-      const items = await knex('items').where({ user_id: id }).select('*');
+      let items = await knex('items').where({ user_id: id }).select('*');
+      items = items.map(item => ({
+        ...item,
+        description: truncateDescription(item.description)
+      }));
       res.json(items);
     } catch (error) {
       console.error('Error fetching user items:', error);
