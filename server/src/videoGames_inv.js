@@ -17,14 +17,14 @@ router.post('/items', async (req, res) => {
       const [newItem] = await knex('items')
         .insert({ user_id, item_name, description, quantity })
         .returning('*');
-      // After creation, the inventory manager can be redirected on the client side.
+      
       res.status(201).json(newItem);
     } catch (error) {
       console.error('Error creating item:', error);
       res.status(500).json({ error: 'Failed to create item' });
     }
   });
-  //Get all items. Truncate characters.
+  //Get all items. 
   router.get('/items', async (req, res) => {
     try {
       let items = await knex('items').select('*');
