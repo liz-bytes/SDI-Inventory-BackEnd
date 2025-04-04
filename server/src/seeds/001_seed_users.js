@@ -12,7 +12,6 @@ exports.seed = async function(knex) {
 
   await knex('users').insert([
     {
-      id: 1,
       first_name: 'Alice',
       last_name: 'Anderson',
       username: 'alice_a',
@@ -21,7 +20,6 @@ exports.seed = async function(knex) {
       updated_at: new Date()
     },
     {
-      id: 2,
       first_name: 'Bob',
       last_name: 'Brown',
       username: 'bob_b',
@@ -30,7 +28,6 @@ exports.seed = async function(knex) {
       updated_at: new Date()
     },
     {
-      id: 3,
       first_name: 'Carol',
       last_name: 'Clark',
       username: 'carol_c',
@@ -39,7 +36,6 @@ exports.seed = async function(knex) {
       updated_at: new Date()
     },
     {
-      id: 4,
       first_name: 'David',
       last_name: 'Dawson',
       username: 'david_d',
