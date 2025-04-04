@@ -106,4 +106,16 @@ router.post('/items', async (req, res) => {
     }
   });
 
+  //User's inventory
+  router.get('/users/:id/items', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const items = await knex('items').where({ user_id: id }).select('*');
+      res.json(items);
+    } catch (error) {
+      console.error('Error fetching user items:', error);
+      res.status(500).json({ error: 'Failed to fetch items for user' });
+    }
+  });
+
   module.exports = router;
